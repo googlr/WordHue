@@ -23,9 +23,7 @@ import java.util.Set;
 
 
 public class WordHue {
-	
-	static Set<String> wordsSet;
-
+	private static Set<String> wordsSet;
 
 	/**
 	 * @param args
@@ -120,16 +118,18 @@ public class WordHue {
 
     public static void main(String[] args) {
     	//get the local dictionary
-    	
-        Path path = Paths.get("words3.txt");
+
+        Path path = Paths.get("/Users/dc/Documents/OneDrive/GitPlace/WordHue/src/words3.txt");
         try{
         	byte[] readBytes = Files.readAllBytes(path);
+            System.out.println("Come Here");
+
             String wordListContents = new String(readBytes, "UTF-8");
             String[] words = wordListContents.split("\n");
             wordsSet = new HashSet<>();
             Collections.addAll(wordsSet, words);
         } catch(IOException e){
-        	System.out.println("IOException Occured!");
+        	System.out.println(e);
         }
     	
         //get the size of the board
@@ -147,6 +147,7 @@ public class WordHue {
     			board[i][j] = in.next().charAt(0);
     		}
     	}
+    	in.close();
     	
     	//search the board for the top 10 longest word.
     	char[][] visited = new char[width][length];
@@ -162,7 +163,7 @@ public class WordHue {
     					i, j, "");
     		}
     	}
-        System.out.println(wordsSet.contains("world"));
+        //System.out.println(wordsSet.contains("orld"));
     }
 
 }
