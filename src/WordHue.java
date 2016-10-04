@@ -67,8 +67,10 @@ public class WordHue {
     	String wordStr_addXY = wordStr + board[startX][startY];
     	visited_XY[startX][startY] = 1;
     	//check if it is a word
+    	//System.out.println("Checking \"+" + wordStr_addXY + "\"");
     	if( wordsSet.contains(wordStr_addXY) ){
-			System.out.println(wordStr_addXY);
+			if(wordStr_addXY.length() > 4) 
+				System.out.println("A word has been found: " + wordStr_addXY);
 		}
     	
     	//continue recursive search
@@ -122,7 +124,7 @@ public class WordHue {
         Path path = Paths.get("/Users/dc/Documents/OneDrive/GitPlace/WordHue/src/words3.txt");
         try{
         	byte[] readBytes = Files.readAllBytes(path);
-            System.out.println("Come Here");
+            //System.out.println("Come Here");
 
             String wordListContents = new String(readBytes, "UTF-8");
             String[] words = wordListContents.split("\n");
@@ -164,6 +166,7 @@ public class WordHue {
     		}
     	}
         //System.out.println(wordsSet.contains("orld"));
+    	System.out.println("All Above!");
     }
 
 }
